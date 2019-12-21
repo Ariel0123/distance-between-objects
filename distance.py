@@ -61,6 +61,6 @@ while True:
       break
 
  
-cap.release()
+video.release()
  
 cv2.destroyAllWindows()
