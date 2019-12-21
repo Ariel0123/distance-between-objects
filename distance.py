@@ -47,12 +47,21 @@ while True:
     print(x_2, y_2)
 
 
-    distance = math.sqrt(((x_1-x_2)**2)+((y_1-y_2)**2))
+    distance_pixel = math.sqrt(((x_1-x_2)**2)+((y_1-y_2)**2))
 
-    result = "Distance: {0:.2f}".format(distance)
+    result_pixel = "Pixel Distance: {0:.2f} pixels".format(distance_pixel)
+
 
     font = cv2.FONT_HERSHEY_SIMPLEX
-    cv2.putText(frame, result, (15,28) , font, 1, (0, 255, 0), 2, cv2.LINE_AA)
+    cv2.putText(frame, result_pixel, (15,28) , font, 1, (0, 255, 0), 2, cv2.LINE_AA)
+
+    pixel = 2.54 / 110.5
+    cm = distance_pixel * pixel
+
+    result_cm = "Cm Distance: {0:.2f} cm".format(cm)
+
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    cv2.putText(frame, result_cm, (15,58) , font, 1, (0, 255, 0), 2, cv2.LINE_AA)
 
     out.write(frame)
     cv2.imshow('Frame',frame)
